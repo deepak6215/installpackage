@@ -46,8 +46,11 @@ if [ $(cat /etc/ntp.conf | grep -c "server 0.in.pool.ntp.org") -eq 0 ]; then
  sed -i '19 a server 0.in.pool.ntp.org' /etc/ntp.conf
 fi
 
-git clone https://github.com/deepak6215/iot_6.git
-cd iot_6/
+#git clone https://github.com/deepak6215/iot_6.git
+cd /home/iplon/repos
+wget https://github.com/deepak6215/iot_6/raw/master/iot6_ubuntu14.tar.gz
+wget https://github.com/deepak6215/iot_6/raw/master/report_docker.tar.gz
+wget https://github.com/deepak6215/iot_6/raw/master/serverData.tar.xz
 wget https://dl.grafana.com/oss/release/grafana_7.0.6_amd64.deb
 sudo dpkg -i grafana_7.0.6_amd64.deb
 service grafana-server restart
