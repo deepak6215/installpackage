@@ -96,9 +96,9 @@ docker run -d --name report-api --restart on-failure:5 -p 83:83 --network="host"
 sudo docker update --restart unless-stopped $(docker ps -q)
 
 #dwagent installation
-wget https://www.dwservice.net/download/dwagent_x86.sh
-chmod 777 dwagent_x86.sh
-./dwagent_x86.sh
+#wget https://www.dwservice.net/download/dwagent_x86.sh
+#chmod 777 dwagent_x86.sh
+#./dwagent_x86.sh
 
 
 apt update -y
@@ -167,10 +167,9 @@ fi
 
 # Untar require files
 cd $SCRIPT_DIR
-cd iot_6/
 tar -xJf serverData.tar.xz -C /
 
-apt update
+apt update -y 
 
 adduser iplon www-data
 mkdir -p /var/www/iSolar/fetchDDT/csv
