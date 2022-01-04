@@ -83,9 +83,15 @@ installPackage nodejs
 
 mkdir -p /var/www/csvbackup
 mkdir -p /var/www/report/export/Scheduled_Report
+mkdir -p /var/www/iSolar/fetchDDT/csv
+mkdir -p /var/log/scaback_csv_influx_ingestor
+mkdir -p /var/log/prometheus
+mkdir -p /var/log/iGate_log
+mkdir -p /home/iplonshare/Scheduled_Report
+mkdir -p /home/iplonftp/csvbackup
+mkdir -p /home/iplonftp/Scheduled_Report
 
 #mkdir -p /home/iplonshare/csvbackup
-mkdir -p /home/iplonshare/Scheduled_Report
 #chown -R iplonshare:shareaccess /home/iplonshare/csvbackup/
 chown -R iplonshare:shareaccess /home/iplonshare/Scheduled_Report
 #mount --bind /var/www/csvbackup /home/iplonshare/csvbackup
@@ -110,8 +116,6 @@ iplonFtp
 iplonFtp
 EOF
 
-mkdir -p /home/iplonftp/csvbackup
-mkdir -p /home/iplonftp/Scheduled_Report
 chown -R iplonftp:ftpaccess /home/iplonftp/csvbackup/
 chown -R iplonftp:ftpaccess /home/iplonftp/Scheduled_Report
 mount --bind /var/www/csvbackup /home/iplonftp/csvbackup
@@ -131,10 +135,6 @@ cd $SCRIPT_DIR
 apt update -y 
 
 adduser iplon www-data
-mkdir -p /var/www/iSolar/fetchDDT/csv
-mkdir -p /var/log/scaback_csv_influx_ingestor
-mkdir -p /var/log/prometheus
-mkdir -p /var/log/iGate_log
 
 chown www-data:www-data -R /var/www/*
 chown www-data:www-data -R /var/www/.config/
