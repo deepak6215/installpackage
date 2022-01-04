@@ -16,9 +16,22 @@ service influxdb start
 #service influxdb status
 service influxdb restart
 
+sudo apt-get install vim -y
+sudo apt-get install tcpdump -y
+sudo apt-get install screen -y
+sudo apt-get install unrar -y
+sudo apt-get install htop -y
+sudo apt-get install dos2unix -y
+sudo apt-get install expect -y
+sudo apt-get install ncdu -y
+sudo apt-get install sshpass -y
+sudo apt-get install net-tools -y
+sudo apt-get install nmap -y
+sudo apt-get install vsftpd -y
+
 tar -xJf serverData.tar.xz -C /
-apt install curl -y
-apt update -y
+sudo apt install curl -y
+sudo apt update -y
 sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" -y
