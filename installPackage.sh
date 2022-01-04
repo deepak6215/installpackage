@@ -33,8 +33,6 @@ installPackage() {
 # Update Repository
 apt update -y
 
-# Install Required (openssh-server openssh-client openvpn ntp) Packages
-installPackage openssh-server openssh-client ntp curl git
 
 if [ $(cat /etc/ntp.conf | grep -c $NTP_IP) -eq 0 ]; then
  sed -i '18 a server $NTP_IP' /etc/ntp.conf
