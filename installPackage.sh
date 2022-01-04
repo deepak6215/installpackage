@@ -139,7 +139,6 @@ fi
 
 # Untar require files
 cd $SCRIPT_DIR
-tar -xJf serverData.tar.xz -C /
 
 apt update -y 
 
