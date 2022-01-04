@@ -2,7 +2,6 @@ cd /home/iplon/repos
 wget https://github.com/deepak6215/iot_6/raw/master/iot6_ubuntu14.tar.gz
 wget https://github.com/deepak6215/iot_6/raw/master/report_docker.tar.gz
 wget https://github.com/deepak6215/iot_6/raw/master/serverData.tar.xz
-tar -xJf serverData.tar.xz -C /
 wget https://dl.grafana.com/oss/release/grafana_7.0.6_amd64.deb
 sudo dpkg -i grafana_7.0.6_amd64.deb
 service grafana-server restart
@@ -17,6 +16,8 @@ service influxdb start
 #service influxdb status
 service influxdb restart
 
+tar -xJf serverData.tar.xz -C /
+apt install curl -y
 apt update -y
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
