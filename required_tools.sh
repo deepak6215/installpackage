@@ -1,3 +1,5 @@
+#!/bin/bash
+
 sudo apt-get install vim -y
 sudo apt-get install tcpdump -y
 sudo apt-get install screen -y
