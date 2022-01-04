@@ -1,3 +1,5 @@
+#!/bin/bash
+
 cd /home/iplon/repos
 wget https://github.com/deepak6215/iot_6/raw/master/iot6_ubuntu14.tar.gz
 wget https://github.com/deepak6215/iot_6/raw/master/report_docker.tar.gz
