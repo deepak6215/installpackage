@@ -47,23 +47,6 @@ if [ $(cat /etc/ntp.conf | grep -c "server 0.in.pool.ntp.org") -eq 0 ]; then
 fi
 
 #git clone https://github.com/deepak6215/iot_6.git
-cd /home/iplon/repos
-wget https://github.com/deepak6215/iot_6/raw/master/iot6_ubuntu14.tar.gz
-wget https://github.com/deepak6215/iot_6/raw/master/report_docker.tar.gz
-wget https://github.com/deepak6215/iot_6/raw/master/serverData.tar.xz
-wget https://dl.grafana.com/oss/release/grafana_7.0.6_amd64.deb
-sudo dpkg -i grafana_7.0.6_amd64.deb
-service grafana-server restart
-#service grafana-server status
-wget https://dl.influxdata.com/telegraf/releases/telegraf_1.12.0-1_amd64.deb
-sudo dpkg -i telegraf_1.12.0-1_amd64.deb
-service telegraf restart
-#service telegraf status
-wget https://dl.influxdata.com/influxdb/releases/influxdb_1.8.5_amd64.deb
-sudo dpkg -i influxdb_1.8.5_amd64.deb
-service influxdb start
-#service influxdb status
-service influxdb restart
 sleep 3;
 
 
@@ -83,17 +66,6 @@ apt update -y
 apt install apt-transport-https ca-certificates curl software-properties-common -y
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs)  stable" -y
-apt update -y
-sudo apt install docker-ce -y
-service docker restart
-sleep 10;
-sudo docker load -i iot6_ubuntu14.tar.gz
-sudo docker run --name iot6_ubuntu14.04 --net host -v /var/www/:/var/www/ -v /var/run/mysqld/:/var/run/mysqld/ -v /var/lib/mysql/:/var/lib/mysql/ -v /var/lib/snmp/:/var/lib/snmp/ -v /opt/iplon/:/opt/iplon/ -itd iot6_php5.5:2.0
-
-#report docker container installation
-docker load -i report_docker.tar.gz
-docker run -d --name report-api --restart on-failure:5 -p 83:83 --network="host" report_docker:latest
-sudo docker update --restart unless-stopped $(docker ps -q)
 
 #dwagent installation
 #wget https://www.dwservice.net/download/dwagent_x86.sh
@@ -234,10 +206,8 @@ if [ $(cat /etc/vsftpd.conf | grep -c "pasv_enable=Yes") -eq 0 ]; then
  echo "pasv_enable=Yes" >> /etc/vsftpd.conf
 fi
 '
-
 #ifdown --exclude=lo -a && sudo ifup --exclude=lo -a
 #service networking restart
-
 service ssh restart
 #service mysql restart
 service ntp restart
@@ -246,24 +216,16 @@ systemctl enable scaback
 service readDDT start
 systemctl enable readDDT
 service scaback restart
-
-
 service scabackFast start
 systemctl enable scabackFast
 service readDDTFast start
 systemctl enable readDDTFast
 service smbd restart
 service vsftpd restart
-
 sleep 15
-
 #mysql -u root -p$MYSQL_PASS iSolar_db < /home/iplon/iSolar_db.sql
-
 sudo -s
-
 service cron restart
-
 echo "package Installation Finished ! wait 5min for rebooting"
-
 sleep 5;
 reboot
