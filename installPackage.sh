@@ -207,7 +207,7 @@ service scabackFast start
 systemctl enable scabackFast
 service readDDTFast start
 systemctl enable readDDTFast
-service smbd restart
+#service smbd restart
 service vsftpd restart
 sleep 15
 #mysql -u root -p$MYSQL_PASS iSolar_db < /home/iplon/iSolar_db.sql
