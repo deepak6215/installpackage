@@ -19,11 +19,12 @@ service influxdb restart
 tar -xJf serverData.tar.xz -C /
 apt install curl -y
 apt update -y
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release -y
-sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io -y
+sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" -y
+sudo apt update -y
+sudo apt install docker-ce -y
+sudo systemctl restart docker
 sudo usermod -aG docker $USER
 service docker restart
 sleep 10;
