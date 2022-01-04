@@ -26,7 +26,7 @@ sudo apt update -y
 sleep 10;
 sudo apt install docker-ce -y
 sleep 10;
-sudo systemctl restart docker
+#sudo systemctl restart docker
 sleep 5;
 sudo usermod -aG docker $USER
 #service docker restart
