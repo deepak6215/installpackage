@@ -23,15 +23,21 @@ sudo apt install apt-transport-https ca-certificates curl software-properties-co
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" -y
 sudo apt update -y
+sleep 10;
 sudo apt install docker-ce -y
+sleep 10;
 sudo systemctl restart docker
+sleep 5;
 sudo usermod -aG docker $USER
-service docker restart
+#service docker restart
 sleep 10;
 sudo docker load -i iot6_ubuntu14.tar.gz
+sleep 5;
 sudo docker run --name iot6_ubuntu14.04 --net host -v /var/www/:/var/www/ -v /var/run/mysqld/:/var/run/mysqld/ -v /var/lib/mysql/:/var/lib/mysql/ -v /var/lib/snmp/:/var/lib/snmp/ -v /opt/iplon/:/opt/iplon/ -itd iot6_php5.5:2.0
 
 #report docker container installation
 docker load -i report_docker.tar.gz
+sleep 5;
 docker run -d --name report-api --restart on-failure:5 -p 83:83 --network="host" report_docker:latest
+sleep 5;
 sudo docker update --restart unless-stopped $(docker ps -q)
