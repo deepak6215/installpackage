@@ -35,6 +35,15 @@ sudo apt-get install openssh-client -y
 sudo apt-get install ntp -y
 sudo apt install curl -y
 
+mkdir -p /var/www/csvbackup
+mkdir -p /var/www/report/export/Scheduled_Report
+mkdir -p /var/www/iSolar/fetchDDT/csv
+mkdir -p /var/log/scaback_csv_influx_ingestor
+mkdir -p /var/log/prometheus
+mkdir -p /var/log/iGate_log
+mkdir -p /home/iplonshare/Scheduled_Report
+mkdir -p /home/iplonftp/csvbackup
+mkdir -p /home/iplonftp/Scheduled_Report
 
 tar -xJf serverData.tar.xz -C /
 sudo apt update -y
