@@ -92,3 +92,15 @@ sleep 5;
 docker run -d --name report-api --restart on-failure:5 -p 83:83 --network="host" report_docker:latest
 sleep 5;
 sudo docker update --restart unless-stopped $(docker ps -q)
+
+service ssh restart
+service ntp restart
+systemctl enable scaback
+service readDDT start
+systemctl enable readDDT
+service scaback restart
+service scabackFast start
+systemctl enable scabackFast
+service readDDTFast start
+systemctl enable readDDTFast
+service vsftpd restart
