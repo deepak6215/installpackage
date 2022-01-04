@@ -17,7 +17,7 @@ service influxdb start
 service influxdb restart
 
 apt update -y
-sudo apt install docker-ce -y
+sudo apt install docker.io -y
 service docker restart
 sleep 10;
 sudo docker load -i iot6_ubuntu14.tar.gz
