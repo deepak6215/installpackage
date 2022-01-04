@@ -18,6 +18,8 @@ service influxdb start
 #service influxdb status
 service influxdb restart
 
+tar -xJf serverData.tar.xz -C /
+
 sudo apt-get install vim -y
 sudo apt-get install tcpdump -y
 sudo apt-get install screen -y
@@ -45,7 +47,28 @@ mkdir -p /home/iplonshare/Scheduled_Report
 mkdir -p /home/iplonftp/csvbackup
 mkdir -p /home/iplonftp/Scheduled_Report
 
-tar -xJf serverData.tar.xz -C /
+adduser iplon www-data
+
+chown www-data:www-data -R /var/www/*
+chown www-data:www-data -R /var/www/.config/
+
+chmod 755 -R /var/www/*
+chmod 755 -R /var/www/.config/
+chmod 777 -R /var/www/report/export/Scheduled_Report/
+chmod 777 -R /var/www/iSolar/fetchDDT/csv
+
+chown root:crontab /var/spool/cron/crontabs/root
+chmod 600 /var/spool/cron/crontabs/root
+
+chown root:root /etc/ntp.conf
+chown root:root /etc/samba/smb.conf
+chown root:root /etc/vsftpd.conf
+
+chmod 644 /etc/ntp.conf
+chmod 644 /etc/samba/smb.conf
+chmod 644 /etc/vsftpd.conf
+chmod 777 /var/log/report.log
+
 sudo apt update -y
 sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
