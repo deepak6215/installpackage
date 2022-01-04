@@ -33,9 +33,6 @@ installPackage() {
 # Update Repository
 apt update -y
 
-# Install supporting (vim tcpdump screen unrar htop dos2uni) Packages
-installPackage vim tcpdump screen unrar htop dos2unix expect ncdu sshpass net-tools nmap vsftpd
-
 # Install Required (openssh-server openssh-client openvpn ntp) Packages
 installPackage openssh-server openssh-client ntp curl git
 
