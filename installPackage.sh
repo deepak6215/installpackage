@@ -34,7 +34,7 @@ installPackage() {
 apt update -y
 
 # Install supporting (vim tcpdump screen unrar htop dos2uni) Packages
-installPackage vim tcpdump screen unrar htop dos2unix expect ncdu sshpass net-tools nmap
+installPackage vim tcpdump screen unrar htop dos2unix expect ncdu sshpass net-tools nmap vsftpd
 
 # Install Required (openssh-server openssh-client openvpn ntp) Packages
 installPackage openssh-server openssh-client ntp curl git
@@ -73,25 +73,13 @@ apt update -y
 #./dwagent_x86.sh
 
 
-apt update -y
+# apt update -y
 # Update Repository for Nodejs
 # add-apt-repository -y ppa:chris-lea/node.js
 # curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 # Update Repository
 # Install Nodejs Package
 installPackage nodejs
-
-
-# Install Samba Server
-installPackage samba
-if [ $(cat /etc/group | grep -c shareaccess) -eq 0 ]; then
- groupadd shareaccess
-fi
-useradd -m iplonshare -g shareaccess -s /usr/sbin/nologin
-smbpasswd -a iplonshare <<EOF
-iplonShare
-iplonShare
-EOF
 
 mkdir -p /var/www/csvbackup
 mkdir -p /var/www/report/export/Scheduled_Report
@@ -112,7 +100,7 @@ if [ $(cat /etc/fstab | grep -c "/home/iplonshare/Scheduled_Report") -eq 0 ]; th
 fi
 
 # Install FTP
-installPackage vsftpd
+# installPackage vsftpd
 if [ $(cat /etc/group | grep -c ftpaccess) -eq 0 ]; then
  groupadd ftpaccess
 fi
