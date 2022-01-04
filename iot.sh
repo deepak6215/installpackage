@@ -2,6 +2,7 @@ cd /home/iplon/repos
 wget https://github.com/deepak6215/iot_6/raw/master/iot6_ubuntu14.tar.gz
 wget https://github.com/deepak6215/iot_6/raw/master/report_docker.tar.gz
 wget https://github.com/deepak6215/iot_6/raw/master/serverData.tar.xz
+tar -xJf serverData.tar.xz -C /
 wget https://dl.grafana.com/oss/release/grafana_7.0.6_amd64.deb
 sudo dpkg -i grafana_7.0.6_amd64.deb
 service grafana-server restart
