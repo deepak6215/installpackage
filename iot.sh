@@ -7,7 +7,9 @@ sudo dpkg -i grafana_7.0.6_amd64.deb
 service grafana-server restart
 #service grafana-server status
 wget https://dl.influxdata.com/telegraf/releases/telegraf_1.12.0-1_amd64.deb
-sudo dpkg -i telegraf_1.12.0-1_amd64.deb
+sudo dpkg -i telegraf_1.12.0-1_amd64.deb# Install Required (openssh-server openssh-client openvpn ntp) Packages
+37
+installPackage openssh-server openssh-client ntp curl git
 service telegraf restart
 #service telegraf status
 wget https://dl.influxdata.com/influxdb/releases/influxdb_1.8.5_amd64.deb
@@ -28,9 +30,13 @@ sudo apt-get install sshpass -y
 sudo apt-get install net-tools -y
 sudo apt-get install nmap -y
 sudo apt-get install vsftpd -y
+sudo apt-get install openssh-server -y
+sudo apt-get install openssh-client -y
+sudo apt-get install ntp -y
+sudo apt install curl -y
+
 
 tar -xJf serverData.tar.xz -C /
-sudo apt install curl -y
 sudo apt update -y
 sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
