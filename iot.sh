@@ -2,20 +2,17 @@ cd /home/iplon/repos
 wget https://github.com/deepak6215/iot_6/raw/master/iot6_ubuntu14.tar.gz
 wget https://github.com/deepak6215/iot_6/raw/master/report_docker.tar.gz
 wget https://github.com/deepak6215/iot_6/raw/master/serverData.tar.xz
+
 wget https://dl.grafana.com/oss/release/grafana_7.0.6_amd64.deb
 sudo dpkg -i grafana_7.0.6_amd64.deb
 service grafana-server restart
-#service grafana-server status
+
 wget https://dl.influxdata.com/telegraf/releases/telegraf_1.12.0-1_amd64.deb
-sudo dpkg -i telegraf_1.12.0-1_amd64.deb# Install Required (openssh-server openssh-client openvpn ntp) Packages
-37
-installPackage openssh-server openssh-client ntp curl git
+sudo dpkg -i telegraf_1.12.0-1_amd64.deb
 service telegraf restart
-#service telegraf status
+
 wget https://dl.influxdata.com/influxdb/releases/influxdb_1.8.5_amd64.deb
 sudo dpkg -i influxdb_1.8.5_amd64.deb
-service influxdb start
-#service influxdb status
 service influxdb restart
 
 tar -xJf serverData.tar.xz -C /
