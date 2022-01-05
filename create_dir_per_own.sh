@@ -10,7 +10,6 @@ sudo mkdir -p /home/iplonshare/Scheduled_Report
 sudo mkdir -p /home/iplonftp/csvbackup
 sudo mkdir -p /home/iplonftp/Scheduled_Report
 
-sudo adduser iplon www-data
 
 sudo chown www-data:www-data -R /var/www/*
 sudo chown www-data:www-data -R /var/www/.config/
