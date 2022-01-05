@@ -35,6 +35,20 @@ docker run -d --name report-api --restart on-failure:5 -p 83:83 --network="host"
 sleep 5;
 sudo docker update --restart unless-stopped $(docker ps -q)
 
+curl -XPOST 'http://localhost:8086/query' --data-urlencode 'q=CREATE DATABASE "iSolar"'
+chown -R iplonftp:ftpaccess /home/iplonftp/csvbackup/
+chown -R iplonftp:ftpaccess /home/iplonftp/Scheduled_Report
+mount --bind /var/www/csvbackup /home/iplonftp/csvbackup
+mount --bind /var/www/report/export/Scheduled_Report /home/iplonftp/Scheduled_Report
+#sed -i "s/anlagen_id=0000/anlagen_id=$SERVER_ID/g" $IPLON_PACKAGE_PATH/scripts/vpn.sh
+#sed -i "s/xxx/$PLANT_NAME/g" /var/www/iSolar/fetchDDT/data.json
+#sed -i "s/XXX/$MYSQL_PASS/g" /var/www/iSolar/fetchDDT/data.json
+#sed -i "s/xxx/$MYSQL_PASS/g" /var/www/DO/db_config.php
+#sed -i "s/xxx/$MYSQL_PASS/g" /var/www/iSolar/powercontrol/db_config.php
+#sed -i "s/xxx/$MYSQL_PASS/g" /var/www/alarmlist/db_config.php
+chown -R iplonshare:shareaccess /home/iplonshare/Scheduled_Report
+mount --bind /var/www/report/export/Scheduled_Report /home/iplonshare/Scheduled_Report
+
 service ssh restart
 service ntp restart
 systemctl enable scaback
