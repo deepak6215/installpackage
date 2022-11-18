@@ -5,8 +5,8 @@ wget https://github.com/deepak6215/iot_6/raw/master/iot6_ubuntu14.tar.gz
 wget https://github.com/deepak6215/iot_6/raw/master/report_docker.tar.gz
 wget https://github.com/deepak6215/iot_6/raw/master/serverData.tar.xz
 
-wget https://dl.grafana.com/oss/release/grafana_7.0.6_amd64.deb
-sudo dpkg -i grafana_7.0.6_amd64.deb
+wget https://dl.grafana.com/oss/release/grafana_9.0.7_amd64.deb
+sudo dpkg -i grafana_9.0.7_amd64.deb
 service grafana-server restart
 
 wget https://dl.influxdata.com/telegraf/releases/telegraf_1.12.0-1_amd64.deb
