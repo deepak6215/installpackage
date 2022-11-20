@@ -1,9 +1,15 @@
 #!/bin/bash
 
 cd /home/iplon/repos
-wget https://github.com/deepak6215/iot_6/raw/master/iot6_ubuntu14.tar.gz
+wget https://github.com/deepak6215/iot_6/raw/master/iot63_php5.tar.gz
+wget https://github.com/deepak6215/iot_6/raw/master/iplon-opcua.tar.gz
+wget https://github.com/deepak6215/iot_6/raw/master/node-red2.tar.gz
 wget https://github.com/deepak6215/iot_6/raw/master/report_docker.tar.gz
 wget https://github.com/deepak6215/iot_6/raw/master/serverData.tar.xz
+
+#wget https://github.com/deepak6215/iot_6/raw/master/iot6_ubuntu14.tar.gz
+#wget https://github.com/deepak6215/iot_6/raw/master/report_docker.tar.gz
+#wget https://github.com/deepak6215/iot_6/raw/master/serverData.tar.xz
 
 wget https://dl.grafana.com/oss/release/grafana_9.0.7_amd64.deb
 sudo dpkg -i grafana_9.0.7_amd64.deb
