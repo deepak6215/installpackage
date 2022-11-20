@@ -30,15 +30,27 @@ sleep 5;
 sudo usermod -aG docker $USER
 service docker restart
 sleep 10;
-sudo docker load -i iot6_ubuntu14.tar.gz
+#sudo docker load -i iot6_ubuntu14.tar.gz
+sudo docker load -i iot63_php5.tar.gz
 sleep 5;
-sudo docker run --name iot6_ubuntu14.04 --net host -v /var/www/:/var/www/ -v /var/run/mysqld/:/var/run/mysqld/ -v /var/lib/mysql/:/var/lib/mysql/ -v /var/lib/snmp/:/var/lib/snmp/ -v /opt/iplon/:/opt/iplon/ -itd iot6_php5.5:2.0
+sudo docker run --name iot6_ubuntu14.04 --restart on-failure:5 --net host -v /var/www/:/var/www/ -v /var/run/mysqld/:/var/run/mysqld/ -v /var/lib/mysql/:/var/lib/mysql/ -v /opt/iplon/:/opt/iplon/ -itd iot63_php5.5:3.0
+#sudo docker run --name iot6_ubuntu14.04 --net host -v /var/www/:/var/www/ -v /var/run/mysqld/:/var/run/mysqld/ -v /var/lib/mysql/:/var/lib/mysql/ -v /var/lib/snmp/:/var/lib/snmp/ -v /opt/iplon/:/opt/iplon/ -itd iot6_php5.5:2.0
 
 #report docker container installation
-docker load -i report_docker.tar.gz
+#docker load -i report_docker.tar.gz
+sudo docker load -i report_docker.tar.gz
 sleep 5;
-docker run -d --name report-api --restart on-failure:5 -p 83:83 --network="host" report_docker:latest
+sudo docker run -d --name report-api --restart on-failure:5 -p 83:83 --network="host" report_docker:latest
+#docker run -d --name report-api --restart on-failure:5 -p 83:83 --network="host" report_docker:latest
 sleep 5;
+sudo docker load -i node-red2.tar.gz
+sleep 5;
+docker run --name node-red2.2 --restart on-failure:5 --net host -itd node-red2.2.0:1.0
+sleep 5;
+sudo docker load -i report_docker.tar.gz
+docker run --name iplon-opcua --restart on-failure:5 --net host -itd iplon-opcua:1.0
+sleep 5;
+
 sudo docker update --restart unless-stopped $(docker ps -q)
 
 curl -XPOST 'http://localhost:8086/query' --data-urlencode 'q=CREATE DATABASE "iSolar"'
