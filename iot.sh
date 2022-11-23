@@ -79,3 +79,4 @@ systemctl enable scabackFast
 service readDDTFast start
 systemctl enable readDDTFast
 service vsftpd restart
+service cron restart
