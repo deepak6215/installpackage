@@ -45,25 +45,26 @@ sudo docker run -d --name report-api --restart on-failure:5 -p 83:83 --network="
 sleep 5;
 sudo docker load -i node-red2.tar.gz
 sleep 5;
-docker run --name node-red2.2 --restart on-failure:5 --net host -itd node-red2.2.0:1.0
+docker run --name node-red2.2 --restart unless-stopped --net host -itd node-red2.2.0:1.0
 sleep 5;
 sudo docker load -i report_docker.tar.gz
 docker run --name iplon-opcua --restart on-failure:5 --net host -itd iplon-opcua:1.0
 sleep 5;
 
-sudo docker update --restart unless-stopped $(docker ps -q)
+#sudo docker update --restart unless-stopped $(docker ps -q)
 
 curl -XPOST 'http://localhost:8086/query' --data-urlencode 'q=CREATE DATABASE "iSolar"'
+curl -XPOST 'http://localhost:8086/query' --data-urlencode 'q=CREATE DATABASE "telegraf" WITH DURATION 30d NAME autogen'
 chown -R iplonftp:ftpaccess /home/iplonftp/csvbackup/
 chown -R iplonftp:ftpaccess /home/iplonftp/Scheduled_Report
 mount --bind /var/www/csvbackup /home/iplonftp/csvbackup
 mount --bind /var/www/report/export/Scheduled_Report /home/iplonftp/Scheduled_Report
-#sed -i "s/anlagen_id=0000/anlagen_id=$SERVER_ID/g" $IPLON_PACKAGE_PATH/scripts/vpn.sh
-#sed -i "s/xxx/$PLANT_NAME/g" /var/www/iSolar/fetchDDT/data.json
-#sed -i "s/XXX/$MYSQL_PASS/g" /var/www/iSolar/fetchDDT/data.json
-#sed -i "s/xxx/$MYSQL_PASS/g" /var/www/DO/db_config.php
-#sed -i "s/xxx/$MYSQL_PASS/g" /var/www/iSolar/powercontrol/db_config.php
-#sed -i "s/xxx/$MYSQL_PASS/g" /var/www/alarmlist/db_config.php
+sed -i "s/iGate_ID="xxx"/iGate_ID=$SERVER_ID/g" $IPLON_PACKAGE_PATH/scripts/iplon_vpn.sh
+sed -i "s/xxx/$PLANT_NAME/g" /var/www/iSolar/fetchDDT/data.json
+sed -i "s/XXX/$MYSQL_PASS/g" /var/www/iSolar/fetchDDT/data.json
+sed -i "s/xxx/$MYSQL_PASS/g" /var/www/DO/db_config.php
+sed -i "s/xxx/$MYSQL_PASS/g" /var/www/iSolar/powercontrol/db_config.php
+sed -i "s/xxx/$MYSQL_PASS/g" /var/www/alarmlist/db_config.php
 chown -R iplonshare:shareaccess /home/iplonshare/Scheduled_Report
 mount --bind /var/www/report/export/Scheduled_Report /home/iplonshare/Scheduled_Report
 
