@@ -49,7 +49,7 @@ sudo docker load -i node-red2.tar.gz
 sleep 5;
 docker run --name node-red2.2 --restart unless-stopped --net host -itd node-red2.2.0:1.0
 sleep 5;
-sudo docker load -i report_docker.tar.gz
+sudo docker load -i iplon-opcua.tar.gz
 docker run --name iplon-opcua --restart on-failure:5 --net host -itd iplon-opcua:1.0
 sleep 5;
 
