@@ -69,8 +69,10 @@ sed -i "s/xxx/$MYSQL_PASS/g" /var/www/iSolar/powercontrol/db_config.php
 sed -i "s/xxx/$MYSQL_PASS/g" /var/www/alarmlist/db_config.php
 chown -R iplonshare:shareaccess /home/iplonshare/Scheduled_Report
 mount --bind /var/www/report/export/Scheduled_Report /home/iplonshare/Scheduled_Report
+chown -R www-data:www-data /var/www
 
 service ssh restart
+service grafana-server restart
 service ntp restart
 systemctl enable scaback
 service readDDT start
