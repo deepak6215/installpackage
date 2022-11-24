@@ -23,6 +23,8 @@ wget https://dl.influxdata.com/influxdb/releases/influxdb_1.8.5_amd64.deb
 sudo dpkg -i influxdb_1.8.5_amd64.deb
 service influxdb restart
 
+sudo apt-get install ncdu -y
+
 tar -xJf serverData.tar.xz -C /
 
 sudo apt update -y
