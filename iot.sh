@@ -6,6 +6,7 @@ wget https://github.com/iplon321-cloud/iot_6.3/raw/master/iplon-opcua.tar.gz
 wget https://github.com/iplon321-cloud/iot_6.3/raw/master/raspberryData.tar.xz
 wget https://github.com/iplon321-cloud/iot_6.3/raw/master/report_docker.tar.gz
 wget https://github.com/iplon321-cloud/iot_6.3/raw/master/serverData.tar.xz
+wget https://github.com/iplon321-cloud/iot_6.3/raw/master/node-red2.tar.gz
 
 #wget https://github.com/deepak6215/iot_6/raw/master/iot6_ubuntu14.tar.gz
 #wget https://github.com/deepak6215/iot_6/raw/master/report_docker.tar.gz
