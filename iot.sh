@@ -28,6 +28,11 @@ sudo apt-get install ncdu -y
 
 tar -xJf serverData.tar.xz -C /
 
+dos2unix /etc/systemd/system/scaback.service
+dos2unix /etc/systemd/system/scabackFast.service
+dos2unix /etc/systemd/system/readDDT.service
+dos2unix /etc/systemd/system/readDDTFast.service
+
 sudo apt update -y
 sleep 5;
 sudo usermod -aG docker $USER
