@@ -33,6 +33,8 @@ dos2unix /etc/systemd/system/scabackFast.service
 dos2unix /etc/systemd/system/readDDT.service
 dos2unix /etc/systemd/system/readDDTFast.service
 
+systemctl daemon-reload
+
 sudo apt update -y
 sleep 5;
 sudo usermod -aG docker $USER
