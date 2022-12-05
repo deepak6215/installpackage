@@ -33,7 +33,9 @@ dos2unix /etc/systemd/system/scabackFast.service
 dos2unix /etc/systemd/system/readDDT.service
 dos2unix /etc/systemd/system/readDDTFast.service
 
+sed -i -e 's/80/8000/g' /etc/apache2/ports.conf
 systemctl daemon-reload
+service apache2 restart
 
 sudo apt update -y
 sleep 5;
