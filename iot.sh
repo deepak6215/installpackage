@@ -81,6 +81,7 @@ chown -R iplonshare:shareaccess /home/iplonshare/Scheduled_Report
 mount --bind /var/www/report/export/Scheduled_Report /home/iplonshare/Scheduled_Report
 chown -R www-data:www-data /var/www
 
+systemctl enable grafana-server
 service ssh restart
 service grafana-server restart
 service ntp restart
