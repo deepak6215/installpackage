@@ -83,8 +83,8 @@ chown -R iplonshare:shareaccess /home/iplonshare/Scheduled_Report
 mount --bind /var/www/report/export/Scheduled_Report /home/iplonshare/Scheduled_Report
 chown -R www-data:www-data /var/www
 
-dos2unix /etc/systemd/system/scaback.service
-dos2unix /etc/systemd/system/scabackFast.service
+dos2unix /etc/init.d/scaback
+dos2unix /etc/init.d/scabackFast
 dos2unix /etc/systemd/system/readDDT.service
 dos2unix /etc/systemd/system/readDDTFast.service
 systemctl daemon-reload
