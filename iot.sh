@@ -32,6 +32,7 @@ dos2unix /etc/systemd/system/scaback.service
 dos2unix /etc/systemd/system/scabackFast.service
 dos2unix /etc/systemd/system/readDDT.service
 dos2unix /etc/systemd/system/readDDTFast.service
+mysql -u root -piplon321 iSolar_db < /home/iplon/iSolar_db.sql
 
 sed -i -e 's/80/8000/g' /etc/apache2/ports.conf
 systemctl daemon-reload
@@ -43,9 +44,9 @@ sudo usermod -aG docker $USER
 service docker restart
 sleep 10;
 #sudo docker load -i iot6_ubuntu14.tar.gz
-docker run -it --name myrabbitmq -p 5672:5672 -p 15672:15672 -p 1883:1883 -p 15675:15675 rabbitmq:3-management
+sudo docker run -it --name myrabbitmq -p 5672:5672 -p 15672:15672 -p 1883:1883 -p 15675:15675 rabbitmq:3-management
 sleep 5;
-docker run -itd --name myinfluxdb -p 18086:8086 influxdb:2.4.0
+sudo docker run -itd --name myinfluxdb -p 18086:8086 influxdb:2.4.0
 sleep 5;
 sudo docker load -i iot63_php5.tar.gz
 sleep 5;
@@ -84,6 +85,8 @@ sed -i "s/xxx/$MYSQL_PASS/g" /var/www/alarmlist/db_config.php
 chown -R iplonshare:shareaccess /home/iplonshare/Scheduled_Report
 mount --bind /var/www/report/export/Scheduled_Report /home/iplonshare/Scheduled_Report
 chown -R www-data:www-data /var/www
+
+
 
 systemctl enable grafana-server
 service ssh restart
