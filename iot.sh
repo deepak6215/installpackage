@@ -28,10 +28,7 @@ sudo apt-get install ncdu -y
 
 tar -xJf serverData.tar.xz -C /
 
-dos2unix /etc/systemd/system/scaback.service
-dos2unix /etc/systemd/system/scabackFast.service
-dos2unix /etc/systemd/system/readDDT.service
-dos2unix /etc/systemd/system/readDDTFast.service
+
 mysql -u root -piplon321 iSolar_db < /home/iplon/iSolar_db.sql
 
 sed -i -e 's/80/8000/g' /etc/apache2/ports.conf
@@ -86,6 +83,11 @@ chown -R iplonshare:shareaccess /home/iplonshare/Scheduled_Report
 mount --bind /var/www/report/export/Scheduled_Report /home/iplonshare/Scheduled_Report
 chown -R www-data:www-data /var/www
 
+dos2unix /etc/systemd/system/scaback.service
+dos2unix /etc/systemd/system/scabackFast.service
+dos2unix /etc/systemd/system/readDDT.service
+dos2unix /etc/systemd/system/readDDTFast.service
+systemctl daemon-reload
 
 
 systemctl enable grafana-server
