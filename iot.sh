@@ -43,6 +43,10 @@ sudo usermod -aG docker $USER
 service docker restart
 sleep 10;
 #sudo docker load -i iot6_ubuntu14.tar.gz
+docker run -it --name myrabbitmq -p 5672:5672 -p 15672:15672 -p 1883:1883 -p 15675:15675 rabbitmq:3-management
+sleep 5;
+docker run -itd --name myinfluxdb -p 18086:8086 influxdb:2.4.0
+sleep 5;
 sudo docker load -i iot63_php5.tar.gz
 sleep 5;
 sudo docker run --name iot6_ubuntu14.04 --restart on-failure:5 --net host -v /var/www/:/var/www/ -v /var/run/mysqld/:/var/run/mysqld/ -v /var/lib/mysql/:/var/lib/mysql/ -v /opt/iplon/:/opt/iplon/ -itd iot63_php5.5:3.0
