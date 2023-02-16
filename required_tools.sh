@@ -24,7 +24,6 @@ while read -r p ; do sudo apt-get install -y $p ; done < <(cat << "EOF"
     openvpn
     ntp
     curl
-    apache2
     nodejs
     git
     docker
