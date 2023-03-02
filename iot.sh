@@ -50,7 +50,7 @@ sleep 10;
 #sudo docker load -i iot6_ubuntu14.tar.gz
 #sudo docker run -itd --name myrabbitmq -p 5672:5672 -p 15672:15672 -p 1883:1883 -p 15675:15675 rabbitmq:3-management
 sleep 5;
-#sudo docker run -itd --name myinfluxdb -p 18086:8086 influxdb:2.4.0
+sudo docker run -itd --name myinfluxdb -p 18086:8086 influxdb:2.4.0
 sleep 5;
 #sudo docker load -i iot63_php5.tar.gz
 sleep 5;
