@@ -36,7 +36,7 @@ sudo apt-get install ncdu -y
 tar -xJf serverData.tar.xz -C /
 
 
-mysql -u root -piplon321 iSolar_db < /home/iplon/iSolar_db.sql
+#mysql -u root -piplon321 iSolar_db < /home/iplon/iSolar_db.sql
 
 sed -i -e "s/80/8000/g" /etc/apache2/ports.conf
 systemctl daemon-reload
@@ -46,28 +46,28 @@ sudo apt update -y
 sleep 5;
 sudo usermod -aG docker $USER
 service docker restart
-sleep 10;
+#sleep 10;
 #sudo docker load -i iot6_ubuntu14.tar.gz
 #sudo docker run -itd --name myrabbitmq -p 5672:5672 -p 15672:15672 -p 1883:1883 -p 15675:15675 rabbitmq:3-management
-sleep 5;
-sudo docker run -itd --name myinfluxdb -p 18086:8086 influxdb:2.4.0
-sleep 5;
+#sleep 5;
+#sudo docker run -itd --name myinfluxdb -p 18086:8086 influxdb:2.4.0
+#sleep 5;
 #sudo docker load -i iot63_php5.tar.gz
-sleep 5;
+#sleep 5;
 #sudo docker run --name iot6_ubuntu14.04 --restart on-failure:5 --net host -v /var/www/:/var/www/ -v /var/run/mysqld/:/var/run/mysqld/ -v /var/lib/mysql/:/var/lib/mysql/ -v /opt/iplon/:/opt/iplon/ -itd iot63_php5.5:3.0
 #sudo docker run --name iot6_ubuntu14.04 --net host -v /var/www/:/var/www/ -v /var/run/mysqld/:/var/run/mysqld/ -v /var/lib/mysql/:/var/lib/mysql/ -v /var/lib/snmp/:/var/lib/snmp/ -v /opt/iplon/:/opt/iplon/ -itd iot6_php5.5:2.0
 
 #report docker container installation
 #docker load -i report_docker.tar.gz
 #sudo docker load -i report_docker.tar.gz
-sleep 5;
+#sleep 5;
 #sudo docker run -d --name report-api --restart on-failure:5 -p 83:83 --network="host" report_docker:latest
 #docker run -d --name report-api --restart on-failure:5 -p 83:83 --network="host" report_docker:latest
-sleep 5;
+#sleep 5;
 #sudo docker load -i node-red2.tar.gz
-sleep 5;
+#sleep 5;
 #docker run --name node-red2.2 --restart unless-stopped --net host -itd node-red2.2.0:1.0
-sleep 5;
+#sleep 5;
 #sudo docker load -i iplon-opcua.tar.gz
 #docker run --name iplon-opcua --restart on-failure:5 --net host -itd iplon-opcua:1.0
 sleep 5;
