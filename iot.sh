@@ -7,10 +7,11 @@ cd /home/iplon/repos
 #wget https://github.com/iplon321-cloud/iot_6.3/raw/master/report_docker.tar.gz
 #wget https://github.com/iplon321-cloud/iot_6.3/raw/master/serverData.tar.xz
 #wget https://github.com/iplon321-cloud/iot_6.3/raw/master/node-red2.tar.gz
-
+sleep 15;
 wget https://storage.googleapis.com/iplon-local-server-bsp/serverData.tar.xz
+sleep 15;
 wget https://storage.googleapis.com/iplon-local-server-bsp/raspberryData.tar.xz
-
+sleep 15;
 sudo apt-get install libfontconfig1
 
 sudo docker run --name iot6_ubuntu14.04 --restart on-failure:5 --net host -v /var/www/:/var/www/ -v /var/run/mysqld/:/var/run/mysqld/ -v /var/lib/mysql/:/var/lib/mysql/ -v /opt/iplon/:/opt/iplon/ -itd ivpn.iplon.co.in:8443/iplon_packages/iot63_php5.5:3.0
