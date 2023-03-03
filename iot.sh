@@ -3,10 +3,13 @@
 cd /home/iplon/repos
 #wget https://github.com/iplon321-cloud/iot_6.3/raw/master/iot63_php5.tar.gz
 #wget https://github.com/iplon321-cloud/iot_6.3/raw/master/iplon-opcua.tar.gz
-wget https://github.com/iplon321-cloud/iot_6.3/raw/master/raspberryData.tar.xz
+#wget https://github.com/iplon321-cloud/iot_6.3/raw/master/raspberryData.tar.xz
 #wget https://github.com/iplon321-cloud/iot_6.3/raw/master/report_docker.tar.gz
-wget https://github.com/iplon321-cloud/iot_6.3/raw/master/serverData.tar.xz
+#wget https://github.com/iplon321-cloud/iot_6.3/raw/master/serverData.tar.xz
 #wget https://github.com/iplon321-cloud/iot_6.3/raw/master/node-red2.tar.gz
+
+wget https://storage.googleapis.com/iplon-local-server-bsp/serverData.tar.xz
+wget https://storage.googleapis.com/iplon-local-server-bsp/raspberryData.tar.xz
 
 sudo apt-get install libfontconfig1
 
